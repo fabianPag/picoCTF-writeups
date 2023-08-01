@@ -1,0 +1,1 @@
+# Challenge: Static ain't always noise - 20p
