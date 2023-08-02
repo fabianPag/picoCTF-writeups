@@ -14,3 +14,7 @@ I began by launching the given instance with ssh. By doing this, I got greeted w
 ![Greeting](images/special1.PNG)
 
 After this, we are thrown directly into the Special interface.
+
+Given no further hints, I decided on trying a bunch of different linux shell commands to see how the Special interface would react. I quickly realized that it would autocorrect the commands to non-valid ones. A good example of this is that `ls` would turn into `Is` which of course is not a valid command.
+
+A workaround that 
