@@ -23,4 +23,14 @@ In our case, by running `$(ls)` we get the following:
 
 ![ls_image](images/ls_image.PNG)
 
-As per the logic description of `$(ls)` stated previously, this must mean that there is a directory called *blargh*.
+As per our explanation of `$(ls)`, this must mean that there is a directory called *blargh*. The next logical step would be to see what is beyond this directory so I called `$(ls blargh)`.
+
+By calling this command, you get a somewhat unexpected syntax error. By messing around with a few other commands I found that the Special interface did not allow for commands to be seperated by a space.
+
+Although this part ended up being quite a thinker for me, I eventually stumbled upon a [website](https://book.hacktricks.xyz/linux-hardening/bypass-bash-restrictions#bypass-forbidden-spaces) explaining how one could bypass forbidden spaces in Bash. This was done by modifying the internal field separator (IFS) which is the variable that defines the character(s) used to seperate a pattern into tokens. Following the website guide, I decided upon changing it from space to `]`. 
+
+By running `$(IFS=];b=ls]blargh;$b)` I got the output `flag.txt not found`. This seems promising. Since there is a flag.txt file in the blargh directory I decided upon modifying the previous command slightly in order to access this txt file.
+
+Using cat we run `$(IFS=];b=cat]blargh/flag.txt;$b)` which finally gave us the flag 
+
+![final_flag](images/final_flag.png)
